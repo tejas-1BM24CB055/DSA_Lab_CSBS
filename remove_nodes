@@ -1,0 +1,65 @@
+/* Snippet to find middle node of linked list.
+Leetcode link: https://leetcode.com/problems/middle-of-the-linked-list/submissions/1823146840/?envType=problem-list-v2&envId=vtjgvq4r */
+/* You are given the head of a linked list.
+Remove every node which has a node with a greater value anywhere to the right side of it.
+Return the head of the modified linked list. */
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+ struct ListNode * reverse(struct ListNode * head){
+    struct ListNode * prev=NULL;
+    struct ListNode * cur=head;
+    struct ListNode * nex;
+    if(!head) 
+        return head;
+    if (!head->next)
+        return head;
+    while(cur){
+        nex=cur->next;
+        cur->next=prev;
+        prev=cur;
+        cur=nex;
+    }
+    return prev;
+ }
+struct ListNode* removeNodes(struct ListNode* head) {
+    //struct ListNode* tail=head;
+    head=reverse(head);
+    if(!head) 
+        return head;
+    if (!head->next)
+        return head;
+    struct ListNode * ptr=head;
+    int max=0;
+    if(ptr->val > ptr->next->val){
+        max=ptr->val;
+        ptr->next=ptr->next->next;
+        //ptr=ptr->next;
+    }
+    else if (ptr->val < ptr->next->val){
+        max=ptr->next->val;
+        ptr=ptr->next;
+    }
+    else{
+        max=ptr->val;
+        ptr=ptr->next;
+    }
+    while(ptr->next){
+        if(ptr->next->val>max){
+            max=ptr->next->val;
+            ptr=ptr->next;
+        }
+        else if(ptr->next->val < max){
+            ptr->next=ptr->next->next;
+        }
+        else{
+            ptr=ptr->next;
+        }
+    }
+    head=reverse(head);
+    return head;
+}
