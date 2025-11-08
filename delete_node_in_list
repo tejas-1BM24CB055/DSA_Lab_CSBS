@@ -1,4 +1,4 @@
-/* Snippet to find middle node of linked list.
+/* Snippet to delete node of linked list.
 Leetcode link: https://leetcode.com/problems/delete-node-in-a-linked-list/description/?envType=problem-list-v2&envId=vtjgvq4r */
 /* There is a singly-linked list head and we want to delete a node node in it.
 
