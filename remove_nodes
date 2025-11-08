@@ -1,4 +1,4 @@
-/* Snippet to find remove node of linked list.
+/* Snippet to remove node of linked list.
 Leetcode link: https://leetcode.com/problems/middle-of-the-linked-list/submissions/1823146840/?envType=problem-list-v2&envId=vtjgvq4r */
 /* You are given the head of a linked list.
 Remove every node which has a node with a greater value anywhere to the right side of it.
