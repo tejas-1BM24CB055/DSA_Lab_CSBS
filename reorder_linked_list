@@ -1,0 +1,40 @@
+/* Snippet to find middle node of linked list.
+Leetcode link: https://leetcode.com/problems/reorder-list/submissions/1823210516/?envType=problem-list-v2&envId=vtjgvq4r */
+/* You are given the head of a singly linked-list. The list can be represented as:
+
+L0 → L1 → … → Ln - 1 → Ln
+Reorder the list to be on the following form:
+
+L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …
+You may not modify the values in the list's nodes. Only nodes themselves may be changed. */
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+void reorderList(struct ListNode* head) {
+    struct ListNode * head1=head;
+    struct ListNode * temp=head;
+    if(!head)
+        return;
+    if(!head->next)
+        return;
+    if(!head->next->next)
+        return;
+    while(head1->next!=NULL && head1->next->next!=NULL){
+    struct ListNode * prev=NULL;
+    struct ListNode * tail=head1;
+    while(tail->next){
+        prev=tail;
+        tail=tail->next;
+    }
+    temp=head1->next;
+    head1->next=tail;
+    tail->next=temp;
+    prev->next=NULL;
+    head1=head1->next->next;
+    }
+}
